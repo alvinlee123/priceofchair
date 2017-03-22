@@ -50,9 +50,12 @@ class User(object):
 
         if user_data is not None:
             # Tell user they are already registered
+            raise UserErrors.UserAlreadyRegistered("The e-mail you used to register already exists")
             pass
         if not Utils.email_is_valid(email):
             # tell user email not constructed properly
+            raise UserErrors.InvalidEmailError("The e-mail you used does not have the right format")
+            pass
             pass
 
         User(email, Utils.hash_password(password)).save_to_db()

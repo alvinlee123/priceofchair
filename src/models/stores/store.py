@@ -6,11 +6,13 @@ import src.models.stores.errors as StoreErrors
 __author__ = 'alee'
 
 class Store(object):
-    def __init__(self, name, url_prefix, tag_name, query, _id=None):
+    def __init__(self, name, url_prefix, tag_name, query, name_item_tag, name_query, _id=None):
         self.name = name
         self.url_prefix = url_prefix
         self.tag_name = tag_name
         self.query = query
+        self.name_item_tag = name_item_tag
+        self.name_query = name_query
         self._id = uuid.uuid4().hex if _id is None else _id
 
     def __repr__(self):
@@ -22,7 +24,9 @@ class Store(object):
             "name":self.name,
             "url_prefix": self.url_prefix,
             "tag_name": self.tag_name,
-            "query": self.query
+            "query": self.query,
+            "name_item_tag":self.name_item_tag,
+            "name_query" : self.name_query
         }
     @classmethod
     def get_by_id(cls, id):
